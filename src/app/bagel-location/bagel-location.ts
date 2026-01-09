@@ -1,15 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { BagelLocationInterface } from '../bagel-location';
 
 @Component({
   selector: 'app-bagel-location',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   template: `
-    <p>
-      bagel-location works!
-    </p>
+    <section class="bagel">
+      <img class="bagel-photo" [src]="bagelLocation.photo" alt="photo of {{ bagelLocation.bagelName }}" />
+      <h2 class="bagel-heading">{{ bagelLocation.bagelName }}</h2>
+      <p class="bagel-location">{{ bagelLocation.bagelDescription }}</p>
+    </section>
   `,
-  styles: ``,
+  styleUrls: [`./bagel-location.css`],
 })
-export class BagelLocation {
 
+export class BagelLocation {
+  @Input() bagelLocation!: BagelLocationInterface;
 }
