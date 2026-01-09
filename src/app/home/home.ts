@@ -18,7 +18,7 @@ import { BagelLocationInterface } from '../bagel-location';
       <app-bagel-location *ngFor="let bagelLocation of bagelLocationList" [bagelLocation]="bagelLocation"></app-bagel-location>
     </section>
   `,
-  styles: ``,
+  styleUrls: ['./home.css'],
 })
 
 export class Home {
