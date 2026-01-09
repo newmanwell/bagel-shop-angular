@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { BagelLocation } from '../bagel-location/bagel-location';
 import { BagelLocationInterface } from '../bagel-location';
 
 @Component({
   selector: 'app-home',
-  imports: [BagelLocation],
+  standalone: true,
+  imports: [CommonModule, BagelLocation],
   template: `
     <section>
       <form>
@@ -13,7 +15,7 @@ import { BagelLocationInterface } from '../bagel-location';
       </form>
     </section>
     <section class="results">
-      <app-bagel-location></app-bagel-location>
+      <app-bagel-location *ngFor="let bagelLocation of bagelLocationList" [bagelLocation]="bagelLocation"></app-bagel-location>
     </section>
   `,
   styles: ``,
@@ -69,7 +71,7 @@ export class Home {
     {
       id: 5,
       bagelName: 'Pumpernickel',
-      photo: 'https://bagelsncreamnj.com/wp-content/uploads/2019/12/pumpernickel-rye-bagel-scaled.jpg',
+      photo: 'https://boichikbagels.com/cdn/shop/products/pump.jpg?v=1603290529',
       bagelDescription: 'Not a chocolate bagel',
       availableBagels: 2,
       creamCheese: false,

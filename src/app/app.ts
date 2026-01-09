@@ -1,9 +1,11 @@
 import {Component} from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Home } from "./home/home";
 
 @Component({
   selector: 'app-root',
-  imports: [Home],
+  standalone: true,
+  imports: [CommonModule, Home],
   template: ` 
     <main>
       <header class="brand-name">
