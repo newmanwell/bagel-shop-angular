@@ -4,11 +4,13 @@ import { Component } from '@angular/core';
   selector: 'app-bagel-location',
   imports: [],
   template: `
-    <p>
-      bagel-location works!
-    </p>
+    <section class="bagel">
+      <img class="bagel-photo" />
+      <h2 class="bagel-heading"></h2>
+      <p class="bagel-location"></p>
+    </section>
   `,
-  styles: ``,
+  styleUrls: [`./bagel-location.css`],
 })
 export class BagelLocation {
 
