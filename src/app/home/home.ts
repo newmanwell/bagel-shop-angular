@@ -27,7 +27,7 @@ export class Home {
       id: 0,
       bagelName: 'Plain',
       photo: 'https://images.squarespace-cdn.com/content/v1/5f0f608ea6738737b62790c1/1595773894105-58D723XLC7M6SGMCS5ML/Studio+Session-024.jpg',
-      bagelDescription: 'A plain bagel, nothing special',
+      bagelDescription: 'A plain bagel, our most special',
       availableBagels: 22,
       creamCheese: true,
       butter: true
@@ -45,7 +45,7 @@ export class Home {
       id: 2,
       bagelName: 'Rainbow',
       photo: 'https://www.tastingtable.com/img/gallery/rainbow-bagel-secrets-viral-food-unicorn-trend/image-import.jpg',
-      bagelDescription: 'Taste the rainbow!, its just a plain bagel with color',
+      bagelDescription: 'Taste the rainbow! Its just a plain bagel with color',
       availableBagels: 6,
       creamCheese: true,
       butter: true
@@ -63,7 +63,7 @@ export class Home {
       id: 4,
       bagelName: 'Egg',
       photo: 'https://static1.squarespace.com/static/5eac4cadbad0a7612d8c693a/t/60329318ce4285406cf12f3c/1613927204984/IMG_0225+2.jpg?format=1500w',
-      bagelDescription: 'Are egges cheap again?',
+      bagelDescription: 'Are eggs cheap again?',
       availableBagels: 5,
       creamCheese: false,
       butter: true
