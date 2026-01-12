@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: dist/first-app
+        working-directory: src
 
     steps:
       - name: Checkout code
