@@ -1,11 +1,12 @@
 import {Component} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Home } from "./home/home";
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, Home],
+  imports: [CommonModule, Home, RouterModule],
   template: ` 
     <main>
       <header class="brand-name">
@@ -13,7 +14,7 @@ import { Home } from "./home/home";
         <h1>The Bagel Shop</h1>
       </header>
       <section class="content">
-        <app-home></app-home>
+        <router-outlet></router-outlet>
       </section>
     </main>
   `,
