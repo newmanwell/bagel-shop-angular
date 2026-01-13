@@ -1,22 +1,26 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { Bagel } from '../bagel';
+import { BagelLocationInterface } from '../bagel-location';
 
 @Component({
   selector: 'app-details',
   imports: [],
   template: `
     <p>
-      details works! {{ bagelId }}
+      details works! {{ bagelLocationInterface?.id }}
     </p>
   `,
   styles: ``,
 })
 export class Details {
   route: ActivatedRoute = inject(ActivatedRoute);
-  bagelId = 0;
+  bagel = inject(Bagel);
+  bagelLocationInterface: BagelLocationInterface | undefined;
 
   constructor() {
-    this.bagelId = Number(this.route.snapshot.params["id"]);
+    const bagelId = Number(this.route.snapshot.params["id"]);
+    this.bagelLocationInterface = this.bagel.getBagelById(bagelId);
   }
 }
