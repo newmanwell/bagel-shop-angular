@@ -27,7 +27,7 @@ jobs:
         run: npm install
 
       - name: Build Angular app
-        run: ng build
+        run: npm run build
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
