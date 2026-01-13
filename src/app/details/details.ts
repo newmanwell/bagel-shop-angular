@@ -7,16 +7,16 @@ import { ActivatedRoute } from '@angular/router';
   imports: [],
   template: `
     <p>
-      details works! {{ bagelLocationId }}
+      details works! {{ bagelId }}
     </p>
   `,
   styles: ``,
 })
 export class Details {
   route: ActivatedRoute = inject(ActivatedRoute);
-  bagelLocationId = 0;
+  bagelId = 0;
 
   constructor() {
-    this.bagelLocationId = Number(this.route.snapshot.params["id"]);
+    this.bagelId = Number(this.route.snapshot.params["id"]);
   }
 }
