@@ -8,9 +8,25 @@ import { BagelLocationInterface } from '../bagel-location';
   selector: 'app-details',
   imports: [],
   template: `
-    <p>
-      details works! {{ bagelLocationInterface?.id }}
-    </p>
+    <article>
+      <img class="bagel-photo" [src]="bagelLocationInterface?.photo" />
+      <section class="bagel-description">
+        <h2 class="bagel-heading">{{ bagelLocationInterface?.bagelName }}</h2>
+        <p class="bagel-description">{{  bagelLocationInterface?.bagelDescription }}</p>
+      </section>
+      <section class="bagel-features">
+        <h2 class="section-heading">About this bagel</h2>
+        <ul>
+          <li>Butter: {{ bagelLocationInterface?.butter}}</li>
+          <li>Cream Cheese: {{ bagelLocationInterface?.creamCheese}}</li>
+          <li>Left in stock: {{ bagelLocationInterface?.availableBagels }}</li>
+        </ul>
+      </section>
+      <section class="order-online">
+        <h2 class="section-heading">Order a bagel</h2>
+        <button class="primary" type="button">Order Now</button>
+      </section>
+    </article>
   `,
   styles: ``,
 })
