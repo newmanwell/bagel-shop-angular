@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BagelLocation } from '../bagel-location/bagel-location';
 import { BagelLocationInterface } from '../bagel-location';
+import { Bagel } from '../bagel';
 
 @Component({
   selector: 'app-home',
@@ -23,4 +24,9 @@ import { BagelLocationInterface } from '../bagel-location';
 
 export class Home {
   bagelLocationList: BagelLocationInterface[] = [];
+  bagel: Bagel = inject(Bagel);
+
+  constructor() {
+    this.bagelLocationList = this.bagel.getAllBagels();
+  }
 }
