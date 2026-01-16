@@ -17,8 +17,8 @@ import { BagelLocationInterface } from '../bagel-location';
       <section class="bagel-features">
         <h2 class="section-heading">About this bagel</h2>
         <ul>
-          <li>Butter: {{ bagelLocationInterface?.butter}}</li>
-          <li>Cream Cheese: {{ bagelLocationInterface?.creamCheese}}</li>
+          <li>Butter: {{ bagelLocationInterface?.butter }}</li>
+          <li>Cream Cheese: {{ bagelLocationInterface?.creamCheese }}</li>
           <li>Left in stock: {{ bagelLocationInterface?.availableBagels }}</li>
         </ul>
       </section>
@@ -28,7 +28,7 @@ import { BagelLocationInterface } from '../bagel-location';
       </section>
     </article>
   `,
-  styles: ``,
+  styleUrls: ['./details.css'],
 })
 export class Details {
   route: ActivatedRoute = inject(ActivatedRoute);
