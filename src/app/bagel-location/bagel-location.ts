@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
       <img class="bagel-photo" [src]="bagelLocation.photo" alt="photo of {{ bagelLocation.bagelName }}" />
       <h2 class="bagel-heading">{{ bagelLocation.bagelName }}</h2>
       <p class="bagel-location">{{ bagelLocation.bagelDescription }}</p>
-      <a [routerLink]="['/details', bagelLocation.id ]">More Bagel Info</a>
+      <a [routerLink]="['/details', bagelLocation.id ]">More {{ bagelLocation.bagelName }} Info</a>
     </section>
   `,
   styleUrls: [`./bagel-location.css`],
