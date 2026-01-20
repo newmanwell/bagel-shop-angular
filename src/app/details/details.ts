@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Bagel } from '../bagel';
 import { BagelLocationInterface } from '../bagel-location';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-details',
-  imports: [],
+  imports: [ReactiveFormsModule],
   template: `
     <article>
       <img class="bagel-photo" [src]="bagelLocationInterface?.photo" />
@@ -34,6 +35,12 @@ export class Details {
   route: ActivatedRoute = inject(ActivatedRoute);
   bagel = inject(Bagel);
   bagelLocationInterface: BagelLocationInterface | undefined;
+
+  orderForm = new FormGroup({
+    firstname: new FormControl(''),
+    lastName: new FormControl(''),
+    email: new FormControl('')
+  });
 
   constructor() {
     const bagelId = Number(this.route.snapshot.params["id"]);
