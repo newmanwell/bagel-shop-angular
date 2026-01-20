@@ -25,7 +25,15 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
       </section>
       <section class="order-online">
         <h2 class="section-heading">Order a bagel</h2>
-        <button class="primary" type="button">Order Now</button>
+        <form [formGroup]="orderForm" (submit)="submitOrder()">
+          <label for="first-name">First Name</label>
+          <input id="first-name" type="text" formControlName="firstName">
+          <label for="last-name">Last Name</label>
+          <input id="last-name" type="text" formControlName="lastName">
+          <label for="email">Email</label>
+          <input id="email" type="text" formControlName="email">
+          <button type="submit" class="primary">Order Now!</button>
+        </form>
       </section>
     </article>
   `,
@@ -37,7 +45,7 @@ export class Details {
   bagelLocationInterface: BagelLocationInterface | undefined;
 
   orderForm = new FormGroup({
-    firstname: new FormControl(''),
+    firstName: new FormControl(''),
     lastName: new FormControl(''),
     email: new FormControl('')
   });
@@ -46,4 +54,11 @@ export class Details {
     const bagelId = Number(this.route.snapshot.params["id"]);
     this.bagelLocationInterface = this.bagel.getBagelById(bagelId);
   }
+
+  submitOrder() {
+    this.bagel.submitOrder(
+      this.orderForm.value.firstName ?? '',
+      this.orderForm.value.lastName ?? '',
+      this.orderForm.value.email ?? ''
+    )}
 }

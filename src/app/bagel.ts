@@ -5,6 +5,10 @@ import { BagelLocationInterface } from './bagel-location';
   providedIn: 'root',
 })
 export class Bagel {
+  submitOrder(firstName: string, lastName: string, email: string) {
+    alert(`Thank you for your order ${firstName} ${lastName}! A confirmation has been sent to ${email}`);
+  }
+
   protected bagelLocationList: BagelLocationInterface [] = [
     {
       id: 0,
