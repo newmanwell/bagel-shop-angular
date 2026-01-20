@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Bagel } from '../bagel';
 import { BagelLocationInterface } from '../bagel-location';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-details',
-  imports: [],
+  imports: [ReactiveFormsModule],
   template: `
     <article>
       <img class="bagel-photo" [src]="bagelLocationInterface?.photo" />
@@ -24,7 +25,15 @@ import { BagelLocationInterface } from '../bagel-location';
       </section>
       <section class="order-online">
         <h2 class="section-heading">Order a bagel</h2>
-        <button class="primary" type="button">Order Now</button>
+        <form [formGroup]="orderForm" (submit)="submitOrder()">
+          <label for="first-name">First Name</label>
+          <input id="first-name" type="text" formControlName="firstName">
+          <label for="last-name">Last Name</label>
+          <input id="last-name" type="text" formControlName="lastName">
+          <label for="email">Email</label>
+          <input id="email" type="text" formControlName="email">
+          <button type="submit" class="primary">Order Now!</button>
+        </form>
       </section>
     </article>
   `,
@@ -35,8 +44,21 @@ export class Details {
   bagel = inject(Bagel);
   bagelLocationInterface: BagelLocationInterface | undefined;
 
+  orderForm = new FormGroup({
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+    email: new FormControl('')
+  });
+
   constructor() {
     const bagelId = Number(this.route.snapshot.params["id"]);
     this.bagelLocationInterface = this.bagel.getBagelById(bagelId);
   }
+
+  submitOrder() {
+    this.bagel.submitOrder(
+      this.orderForm.value.firstName ?? '',
+      this.orderForm.value.lastName ?? '',
+      this.orderForm.value.email ?? ''
+    )}
 }
