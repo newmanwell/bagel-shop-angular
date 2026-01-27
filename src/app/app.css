@@ -6,11 +6,27 @@ header {
   display: flex;
   height: 60px;
   align-items: center;
+  justify-content: space-around;
   padding: var(--content-padding);
   box-shadow: 0px 5px 25px var(--shadow-color);
 }
 
+.heading-logo {
+  display: flex;
+  align-items: center;
+}
+
 .content {
   padding: var(--content-padding);
+}
+
+.home-link {
+  height: 75px;
+}
+
+@media (max-width: 350px) {
+  .home-link {
+    height: 45px;
+  }
 }
 
