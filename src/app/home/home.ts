@@ -1,42 +1,25 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BagelLocation } from '../bagel-location/bagel-location';
-import { BagelLocationInterface } from '../bagel-location';
-import { Bagel } from '../bagel';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, BagelLocation],
+  imports: [CommonModule, RouterModule],
   template: `
     <section>
-      <form>
-        <input type="text" placeholder="Filter by bagel" #filter>
-        <button class="primary" type="button" (click)="filterResults(filter.value)">Search</button>
-      </form>
-    </section>
-    <section class="results">
-      <app-bagel-location *ngFor="let bagelLocation of filteredBagelList" [bagelLocation]="bagelLocation"></app-bagel-location>
+      <h2>Happiness is a warm bagel</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      <a [routerLink]="['/allbagels']">Our Bagels</a>
     </section>
   `,
   styleUrls: ['./home.css'],
 })
 
 export class Home {
-  bagelLocationList: BagelLocationInterface[] = [];
-  bagel: Bagel = inject(Bagel);
-  filteredBagelList: BagelLocationInterface[] = [];
-
-  constructor() {
-    this.bagelLocationList = this.bagel.getAllBagels();
-    this.filteredBagelList = this.bagelLocationList;
-  }
-
-  filterResults(text: string) {
-    if (!text) this.filteredBagelList = this.bagelLocationList;
-
-    this.filteredBagelList = this.bagelLocationList.filter(
-      bagelLocationList => bagelLocationList?.bagelName.toLowerCase().includes(text.toLowerCase())
-    );
-  }
+  
 }
