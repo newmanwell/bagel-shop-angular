@@ -11,7 +11,7 @@ import { Bagel } from '../bagel';
   template: `
     <section>
       <form>
-        <input type="text" placeholder="Filter by bagel" #filter>
+        <input type="text" placeholder="Filter by bagel" #filter (input)="filterResults(filter.value)">
         <button class="primary" type="button" (click)="filterResults(filter.value)">Search</button>
       </form>
     </section>
