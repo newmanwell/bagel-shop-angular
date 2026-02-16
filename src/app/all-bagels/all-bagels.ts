@@ -11,8 +11,8 @@ import { Bagel } from '../bagel';
   template: `
     <section>
       <form (submit)="$event.preventDefault()">
-        <input type="text" placeholder="Filter by bagel" #filter (input)="filterResults(null, filter.value)">
-        <button class="primary" type="button" (click)="filterResults(null, filter.value)">Search</button>
+        <input type="text" placeholder="Filter by bagel" #filter (input)="filterResults(filter.value)">
+        <button class="primary" type="button" (click)="filterResults(filter.value)">Search</button>
       </form>
     </section>
     <section class="results">
@@ -32,8 +32,7 @@ export class AllBagels {
     this.filteredBagelList = this.bagelLocationList;
   }
 
-  filterResults(event: Event | null, text: string) {
-    event?.preventDefault();
+  filterResults(text: string) {
     if (!text) this.filteredBagelList = this.bagelLocationList;
 
     this.filteredBagelList = this.bagelLocationList.filter(
