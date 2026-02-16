@@ -10,9 +10,9 @@ import { Bagel } from '../bagel';
   imports: [CommonModule, BagelLocation],
   template: `
     <section>
-      <form>
-        <input type="text" placeholder="Filter by bagel" #filter (input)="filterResults(filter.value)">
-        <button class="primary" type="button" (click)="filterResults(filter.value)">Search</button>
+      <form (submit)="$event.preventDefault()">
+        <input type="text" placeholder="Filter by bagel" #filter (input)="filterResults(null, filter.value)">
+        <button class="primary" type="button" (click)="filterResults(null, filter.value)">Search</button>
       </form>
     </section>
     <section class="results">
@@ -32,7 +32,8 @@ export class AllBagels {
     this.filteredBagelList = this.bagelLocationList;
   }
 
-  filterResults(text: string) {
+  filterResults(event: Event | null, text: string) {
+    event?.preventDefault();
     if (!text) this.filteredBagelList = this.bagelLocationList;
 
     this.filteredBagelList = this.bagelLocationList.filter(
