@@ -21,6 +21,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
           <li>Butter: {{ bagelLocationInterface?.butter }}</li>
           <li>Cream Cheese: {{ bagelLocationInterface?.creamCheese }}</li>
           <li>Left in stock: {{ bagelLocationInterface?.availableBagels }}</li>
+          <li>Price: $ {{ bagelLocationInterface?.price }}</li>
         </ul>
       </section>
       <section class="order-online">
@@ -47,7 +48,7 @@ export class Details {
   orderForm = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
-    email: new FormControl('')
+    email: new FormControl(''),
   });
 
   constructor() {
@@ -59,6 +60,7 @@ export class Details {
     this.bagel.submitOrder(
       this.orderForm.value.firstName ?? '',
       this.orderForm.value.lastName ?? '',
-      this.orderForm.value.email ?? ''
+      this.orderForm.value.email ?? '',
+      this.bagelLocationInterface?.price || 0
     )}
 }

@@ -3,6 +3,7 @@ export interface BagelLocationInterface {
   bagelName: string,
   photo: string,
   bagelDescription: string,
+  price: number,
   availableBagels: number,
   creamCheese: boolean,
   butter: boolean
