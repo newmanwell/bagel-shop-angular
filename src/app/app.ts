@@ -19,10 +19,15 @@ import { RouterModule } from '@angular/router';
       <section class="content">
         <router-outlet></router-outlet>
       </section>
+      <footer>
+        <a href="https://www.shaunnewman.dev" target="_blank" >Developed By: &copy; Shaun Newman <span id="year">{{ currentYear }}</span></a> 
+      </footer>
     </main>
   `,
   styleUrls: ['./app.css'],
 })
 export class App {
   title = 'Bagel Shop pt 2';
+
+  currentYear = new Date().getFullYear();
 }
