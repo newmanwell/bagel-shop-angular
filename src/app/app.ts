@@ -14,7 +14,7 @@ import { RouterModule } from '@angular/router';
           <img class="brand-logo" src="/assets/logo.svg" alt="bagel logo" aria-hidden="true" />
           <h1>The Bagel Shop</h1>
         </div>
-        <a [routerLink]="['/']"><img class="home-link" src="/assets/home.webp" alt="home page" /></a>
+        <a [routerLink]="['/']"><img class="home-link" src="/assets/bagel-home.jpeg" alt="home page" /></a>
       </header>
       <section class="content">
         <router-outlet></router-outlet>
