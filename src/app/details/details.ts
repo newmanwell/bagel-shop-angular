@@ -26,14 +26,14 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
       </section>
       <section class="order-online">
         <h2 class="section-heading">Order a bagel</h2>
-        <form [formGroup]="orderForm" (submit)="submitOrder()">
-          <label for="first-name">First Name</label>
+        <form>
+          <!-- <label for="first-name">First Name</label>
           <input id="first-name" type="text" formControlName="firstName">
           <label for="last-name">Last Name</label>
           <input id="last-name" type="text" formControlName="lastName">
           <label for="email">Email</label>
-          <input id="email" type="text" formControlName="email">
-          <button type="submit" class="primary">Order Now!</button>
+          <input id="email" type="text" formControlName="email"> -->
+          <button type="submit" class="primary">Add to Cart</button>
         </form>
       </section>
     </article>
@@ -45,22 +45,24 @@ export class Details {
   bagel = inject(Bagel);
   bagelLocationInterface: BagelLocationInterface | undefined;
 
-  orderForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-    email: new FormControl(''),
-  });
+  // [formGroup]="orderForm"
+  // orderForm = new FormGroup({
+  //   firstName: new FormControl(''),
+  //   lastName: new FormControl(''),
+  //   email: new FormControl(''),
+  // });
 
   constructor() {
     const bagelId = Number(this.route.snapshot.params["id"]);
     this.bagelLocationInterface = this.bagel.getBagelById(bagelId);
   }
 
-  submitOrder() {
-    this.bagel.submitOrder(
-      this.orderForm.value.firstName ?? '',
-      this.orderForm.value.lastName ?? '',
-      this.orderForm.value.email ?? '',
-      this.bagelLocationInterface?.price || 0
-    )}
+  // (submit)="submitOrder()"
+  // submitOrder() {
+  //   this.bagel.submitOrder(
+  //     this.orderForm.value.firstName ?? '',
+  //     this.orderForm.value.lastName ?? '',
+  //     this.orderForm.value.email ?? '',
+  //     this.bagelLocationInterface?.price || 0
+  //   )}
 }
