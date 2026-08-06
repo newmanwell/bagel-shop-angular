@@ -15,6 +15,7 @@ import { RouterModule } from '@angular/router';
           <h1>The Bagel Shop</h1>
         </div>
         <a [routerLink]="['/']"><img class="home-link" src="/assets/bagel-home.jpeg" alt="home page" /></a>
+        <a class="cart-link" [routerLink]="['/cart']">Cart</a>
       </header>
       <section class="content">
         <router-outlet></router-outlet>

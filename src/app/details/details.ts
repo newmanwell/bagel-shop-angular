@@ -3,7 +3,10 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Bagel } from '../bagel';
 import { BagelLocationInterface } from '../bagel-location';
+import { CartItemInterface } from '../cart-item';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+
+const CART_STORAGE_KEY = 'cart';
 
 @Component({
   selector: 'app-details',
@@ -33,7 +36,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
           <input id="last-name" type="text" formControlName="lastName">
           <label for="email">Email</label>
           <input id="email" type="text" formControlName="email"> -->
-          <button type="submit" class="primary">Add to Cart</button>
+          <button type="button" class="primary" (click)="addToCart()">Add to Cart</button>
         </form>
       </section>
     </article>
@@ -55,6 +58,23 @@ export class Details {
   constructor() {
     const bagelId = Number(this.route.snapshot.params["id"]);
     this.bagelLocationInterface = this.bagel.getBagelById(bagelId);
+  }
+
+  addToCart() {
+    if (!this.bagelLocationInterface) {
+      return;
+    }
+
+    const cart: CartItemInterface[] = JSON.parse(localStorage.getItem(CART_STORAGE_KEY) ?? '[]');
+    const existingItem = cart.find(item => item.id === this.bagelLocationInterface!.id);
+
+    if (existingItem) {
+      existingItem.quantity++;
+    } else {
+      cart.push({ id: this.bagelLocationInterface.id, quantity: 1 });
+    }
+
+    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
   }
 
   // (submit)="submitOrder()"
