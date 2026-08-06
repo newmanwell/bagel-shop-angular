@@ -1,0 +1,37 @@
+.cart {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.cart-line {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: var(--accent-color);
+  border-radius: 20px;
+  padding: 10px 20px;
+}
+
+.bagel-thumbnail {
+  height: 60px;
+  width: 60px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.bagel-name {
+  flex: 1;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.cart-empty {
+  text-align: center;
+}
+
+.cart-total {
+  text-align: right;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
