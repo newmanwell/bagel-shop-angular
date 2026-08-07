@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Bagel } from '../bagel';
 import { BagelLocationInterface } from '../bagel-location';
 import { CartItemInterface } from '../cart-item';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 const CART_STORAGE_KEY = 'cart';
 
@@ -15,7 +16,7 @@ interface CartLineItem {
 @Component({
   selector: 'app-shopping-cart',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule],
   template: `
     <section class="cart">
       <article class="cart-line" *ngFor="let line of cartLineItems">
@@ -26,6 +27,18 @@ interface CartLineItem {
       </article>
       <p class="cart-empty" *ngIf="!cartLineItems.length">Your cart is empty.</p>
       <p class="cart-total" *ngIf="cartLineItems.length">Total: $ {{ total.toFixed(2) }}</p>
+    </section>
+    <section class="order-online">
+      <form [formGroup]="orderForm" (ngSubmit)="submitOrder()">
+        <h2 class="section-heading">Submit Order</h2>
+        <label for="first-name">First Name</label>
+        <input id="first-name" type="text" formControlName="firstName">
+        <label for="last-name">Last Name</label>
+        <input id="last-name" type="text" formControlName="lastName">
+        <label for="email">Email</label>
+        <input id="email" type="text" formControlName="email">
+        <button type="submit" class="primary">Submit Order</button>
+      </form>
     </section>
   `,
   styleUrls: ['./shopping-cart.css'],
@@ -49,4 +62,18 @@ export class ShoppingCart {
 
     this.total = this.cartLineItems.reduce((sum, line) => sum + line.subtotal, 0);
   }
+
+  orderForm = new FormGroup({
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+    email: new FormControl(''),
+  });
+
+  submitOrder() {
+    this.bagel.submitOrder(
+      this.orderForm.value.firstName ?? '',
+      this.orderForm.value.lastName ?? '',
+      this.orderForm.value.email ?? '',
+      this.total || 0
+    )}
 }

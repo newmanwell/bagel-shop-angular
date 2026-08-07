@@ -4,13 +4,12 @@ import { ActivatedRoute } from '@angular/router';
 import { Bagel } from '../bagel';
 import { BagelLocationInterface } from '../bagel-location';
 import { CartItemInterface } from '../cart-item';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 const CART_STORAGE_KEY = 'cart';
 
 @Component({
   selector: 'app-details',
-  imports: [ReactiveFormsModule],
+  imports: [],
   template: `
     <article>
       <img class="bagel-photo" [src]="bagelLocationInterface?.photo" />
@@ -30,12 +29,6 @@ const CART_STORAGE_KEY = 'cart';
       <section class="order-online">
         <h2 class="section-heading">Order a bagel</h2>
         <form>
-          <!-- <label for="first-name">First Name</label>
-          <input id="first-name" type="text" formControlName="firstName">
-          <label for="last-name">Last Name</label>
-          <input id="last-name" type="text" formControlName="lastName">
-          <label for="email">Email</label>
-          <input id="email" type="text" formControlName="email"> -->
           <button type="button" class="primary" (click)="addToCart()">Add to Cart</button>
         </form>
       </section>
@@ -47,13 +40,6 @@ export class Details {
   route: ActivatedRoute = inject(ActivatedRoute);
   bagel = inject(Bagel);
   bagelLocationInterface: BagelLocationInterface | undefined;
-
-  // [formGroup]="orderForm"
-  // orderForm = new FormGroup({
-  //   firstName: new FormControl(''),
-  //   lastName: new FormControl(''),
-  //   email: new FormControl(''),
-  // });
 
   constructor() {
     const bagelId = Number(this.route.snapshot.params["id"]);
@@ -76,13 +62,4 @@ export class Details {
 
     localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
   }
-
-  // (submit)="submitOrder()"
-  // submitOrder() {
-  //   this.bagel.submitOrder(
-  //     this.orderForm.value.firstName ?? '',
-  //     this.orderForm.value.lastName ?? '',
-  //     this.orderForm.value.email ?? '',
-  //     this.bagelLocationInterface?.price || 0
-  //   )}
 }

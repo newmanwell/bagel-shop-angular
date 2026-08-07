@@ -5,8 +5,8 @@ import { BagelLocationInterface } from './bagel-location';
   providedIn: 'root',
 })
 export class Bagel {
-  submitOrder(firstName: string, lastName: string, email: string, price?: number) {
-    alert(`Thank you for your order ${firstName} ${lastName}! The total price is: $${price ?? 'unknown'}. A confirmation has been sent to ${email}`);
+  submitOrder(firstName: string, lastName: string, email: string, total?: number) {
+    alert(`Thank you for your order ${firstName} ${lastName}! The total price is: $${total?.toFixed(2) ?? 'unknown'}. A confirmation has been sent to ${email}`);
   }
 
   protected bagelLocationList: BagelLocationInterface [] = [
