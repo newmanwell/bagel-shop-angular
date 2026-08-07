@@ -28,15 +28,18 @@ interface CartLineItem {
       <p class="cart-empty" *ngIf="!cartLineItems.length">Your cart is empty.</p>
       <p class="cart-total" *ngIf="cartLineItems.length">Total: $ {{ total.toFixed(2) }}</p>
     </section>
-    <form [formGroup]="orderForm" (ngSubmit)="submitOrder()">
-      <label for="first-name">First Name</label>
-      <input id="first-name" type="text" formControlName="firstName">
-      <label for="last-name">Last Name</label>
-      <input id="last-name" type="text" formControlName="lastName">
-      <label for="email">Email</label>
-      <input id="email" type="text" formControlName="email">
-      <button type="submit">Submit Order</button>
-    </form>
+    <section class="order-online">
+      <form [formGroup]="orderForm" (ngSubmit)="submitOrder()">
+        <h2 class="section-heading">Submit Order</h2>
+        <label for="first-name">First Name</label>
+        <input id="first-name" type="text" formControlName="firstName">
+        <label for="last-name">Last Name</label>
+        <input id="last-name" type="text" formControlName="lastName">
+        <label for="email">Email</label>
+        <input id="email" type="text" formControlName="email">
+        <button type="submit" class="primary">Submit Order</button>
+      </form>
+    </section>
   `,
   styleUrls: ['./shopping-cart.css'],
 })
