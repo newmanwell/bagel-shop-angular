@@ -47,14 +47,6 @@ footer a::after {
   margin-left: 5px;
 }
 
-@media (max-width: 450px) {
-  header,
-  footer {
-    width: 100%;
-    box-sizing: border-box;
-  }
-}
-
 @media (max-width: 350px) {
   .home-link {
     height: 45px;
