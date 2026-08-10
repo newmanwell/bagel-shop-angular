@@ -43,6 +43,17 @@
   justify-content: flex-end;
 }
 
+@media (max-width: 450px) {
+  form {
+    width: 100%;
+  }
+
+  .cart-line {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
 .section-heading {
   font-size: 18pt;
   margin-bottom: 15px;
