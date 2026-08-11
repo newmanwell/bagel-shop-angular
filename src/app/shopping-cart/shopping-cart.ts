@@ -31,7 +31,7 @@ interface CartLineItem {
     <section class="order-online">
       <form [formGroup]="orderForm" (ngSubmit)="submitOrder()">
         <h2 class="section-heading">Submit Order</h2>
-        <label for="first-name">First Name</label>
+        <label for="first-name" required>First Name</label>
         <input id="first-name" type="text" formControlName="firstName">
         <label for="last-name">Last Name</label>
         <input id="last-name" type="text" formControlName="lastName">
@@ -80,5 +80,6 @@ export class ShoppingCart {
     localStorage.removeItem(CART_STORAGE_KEY);
     this.cartLineItems = [];
     this.total = 0;
+    this.orderForm.reset();
   }
 }
