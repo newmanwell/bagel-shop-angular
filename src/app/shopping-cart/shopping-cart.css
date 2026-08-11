@@ -26,6 +26,16 @@
   color: var(--primary-color);
 }
 
+.quantityButton {
+  margin-top: 0px;
+  margin-right: 2px;
+  padding: 10px;
+  border: solid 1px var(--primary-color);
+  background: var(--primary-color);
+  color: white;
+  border-radius: 8px;
+}
+
 .cart-empty {
   text-align: center;
 }
