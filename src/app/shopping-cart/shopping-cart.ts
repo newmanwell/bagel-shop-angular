@@ -31,12 +31,12 @@ interface CartLineItem {
     <section class="order-online">
       <form [formGroup]="orderForm" (ngSubmit)="submitOrder()">
         <h2 class="section-heading">Submit Order</h2>
-        <label for="first-name" required>First Name</label>
-        <input id="first-name" type="text" formControlName="firstName">
-        <label for="last-name" required>Last Name</label>
-        <input id="last-name" type="text" formControlName="lastName">
+        <label for="first-name" >First Name</label>
+        <input id="first-name" type="text" formControlName="firstName" required>
+        <label for="last-name" >Last Name</label>
+        <input id="last-name" type="text" formControlName="lastName" required>
         <label for="email" required>Email</label>
-        <input id="email" type="text" formControlName="email">
+        <input id="email" type="text" formControlName="email" required>
         <button type="submit" class="primary" [disabled]="orderForm.invalid">Submit Order</button>
       </form>
     </section>
