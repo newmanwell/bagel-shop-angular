@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Bagel } from '../bagel';
 import { BagelLocationInterface } from '../bagel-location';
 import { CartItemInterface } from '../cart-item';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 const CART_STORAGE_KEY = 'cart';
 
@@ -33,11 +33,11 @@ interface CartLineItem {
         <h2 class="section-heading">Submit Order</h2>
         <label for="first-name" required>First Name</label>
         <input id="first-name" type="text" formControlName="firstName">
-        <label for="last-name">Last Name</label>
+        <label for="last-name" required>Last Name</label>
         <input id="last-name" type="text" formControlName="lastName">
-        <label for="email">Email</label>
+        <label for="email" required>Email</label>
         <input id="email" type="text" formControlName="email">
-        <button type="submit" class="primary">Submit Order</button>
+        <button type="submit" class="primary" [disabled]="orderForm.invalid">Submit Order</button>
       </form>
     </section>
   `,
@@ -64,9 +64,9 @@ export class ShoppingCart {
   }
 
   orderForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-    email: new FormControl(''),
+    firstName: new FormControl('', Validators.required),
+    lastName: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.required),
   });
 
   submitOrder() {
