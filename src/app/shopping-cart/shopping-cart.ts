@@ -67,10 +67,16 @@ export class ShoppingCart {
     this.total = this.cartLineItems.reduce((sum, line) => sum + line.subtotal, 0);
   }
 
+updateLocalStorage() {
+  const cart = this.cartLineItems.map(l => ({ id: l.bagelLocation.id, quantity: l.quantity }));
+  localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+}
+
   incrementQuantity(line: CartLineItem) {
     line.quantity += 1;
     line.subtotal = line.bagelLocation.price * line.quantity;
     this.total = this.cartLineItems.reduce((sum, l) => sum + l.subtotal, 0);
+    this.updateLocalStorage();
   }
 
   decrementQuantity(line: CartLineItem) {
@@ -81,6 +87,7 @@ export class ShoppingCart {
     line.quantity -= 1;
     line.subtotal = line.bagelLocation.price * line.quantity;
     this.total = this.cartLineItems.reduce((sum, l) => sum + l.subtotal, 0);
+    this.updateLocalStorage();
   }
 
   orderForm = new FormGroup({
