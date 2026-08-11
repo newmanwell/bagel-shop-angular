@@ -23,8 +23,8 @@ interface CartLineItem {
         <img class="bagel-thumbnail" [src]="line.bagelLocation.photo" alt="photo of {{ line.bagelLocation.bagelName }}" />
         <span class="bagel-name">{{ line.bagelLocation.bagelName }}</span>
         <span>
-          <button (click)="incrementQuantity(line)">+</button>
-          <button (click)="decrementQuantity(line)" [disabled]="line.quantity === 0">-</button>
+          <button class="quantityButton" (click)="incrementQuantity(line)">+</button>
+          <button class="quantityButton" (click)="decrementQuantity(line)" [disabled]="line.quantity === 0">-</button>
         </span>
         <span class="bagel-quantity">Qty: {{ line.quantity }}</span>
         <span class="bagel-subtotal">$ {{ line.subtotal.toFixed(2) }}</span>
