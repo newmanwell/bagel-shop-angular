@@ -75,5 +75,10 @@ export class ShoppingCart {
       this.orderForm.value.lastName ?? '',
       this.orderForm.value.email ?? '',
       this.total || 0
-    )}
+    );
+
+    localStorage.removeItem(CART_STORAGE_KEY);
+    this.cartLineItems = [];
+    this.total = 0;
+  }
 }
