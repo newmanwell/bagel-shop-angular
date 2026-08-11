@@ -35,7 +35,7 @@ interface CartLineItem {
         <input id="first-name" type="text" formControlName="firstName" required>
         <label for="last-name" >Last Name</label>
         <input id="last-name" type="text" formControlName="lastName" required>
-        <label for="email" required>Email</label>
+        <label for="email">Email</label>
         <input id="email" type="text" formControlName="email" required>
         <button type="submit" class="primary" [disabled]="orderForm.invalid">Submit Order</button>
       </form>
