@@ -22,6 +22,10 @@ interface CartLineItem {
       <article class="cart-line" *ngFor="let line of cartLineItems">
         <img class="bagel-thumbnail" [src]="line.bagelLocation.photo" alt="photo of {{ line.bagelLocation.bagelName }}" />
         <span class="bagel-name">{{ line.bagelLocation.bagelName }}</span>
+        <span>
+          <button (click)="incrementQuantity(line)">+</button>
+          <button (click)="decrementQuantity(line)" [disabled]="line.quantity === 0">-</button>
+        </span>
         <span class="bagel-quantity">Qty: {{ line.quantity }}</span>
         <span class="bagel-subtotal">$ {{ line.subtotal.toFixed(2) }}</span>
       </article>
@@ -61,6 +65,22 @@ export class ShoppingCart {
       .filter((line): line is CartLineItem => line !== undefined);
 
     this.total = this.cartLineItems.reduce((sum, line) => sum + line.subtotal, 0);
+  }
+
+  incrementQuantity(line: CartLineItem) {
+    line.quantity += 1;
+    line.subtotal = line.bagelLocation.price * line.quantity;
+    this.total = this.cartLineItems.reduce((sum, l) => sum + l.subtotal, 0);
+  }
+
+  decrementQuantity(line: CartLineItem) {
+    if (line.quantity === 0) {
+      return;
+    }
+
+    line.quantity -= 1;
+    line.subtotal = line.bagelLocation.price * line.quantity;
+    this.total = this.cartLineItems.reduce((sum, l) => sum + l.subtotal, 0);
   }
 
   orderForm = new FormGroup({
