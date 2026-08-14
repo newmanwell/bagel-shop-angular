@@ -41,7 +41,7 @@ interface CartLineItem {
         <input id="last-name" type="text" formControlName="lastName" required>
         <label for="email">Email</label>
         <input id="email" type="text" formControlName="email" required>
-        <button type="submit" class="primary" [disabled]="orderForm.invalid">Submit Order</button>
+        <button type="submit" class="primary" [disabled]="orderForm.invalid || total === 0">Submit Order</button>
       </form>
     </section>
   `,
