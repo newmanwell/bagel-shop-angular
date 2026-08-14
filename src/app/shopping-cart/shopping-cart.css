@@ -38,6 +38,8 @@
 
 .cart-empty {
   text-align: center;
+  color: var(--primary-color);
+  font-weight: bold;
 }
 
 .cart-total {
