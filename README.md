@@ -1,6 +1,6 @@
 # Bagel Shop Angular
 
-A small online bagel shop where visitors can browse the menu, look at the details of each bagel, add bagels to a cart, and submit an order. This is the Angular rebuild of my original React project.
+An online bagel shop where visitors can browse the menu, look at the details of each bagel, add bagels to a cart, and submit an order. This is the Angular rebuild of my original React project.
 
 **Live site:** [thebagelshop.shop](https://www.thebagelshop.shop/)
 **React version:** [newmanwell/bagel-shop](https://github.com/newmanwell/bagel-shop)
